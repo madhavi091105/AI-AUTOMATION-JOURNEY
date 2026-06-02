@@ -1,0 +1,17 @@
+function onFormSubmit(e) {
+
+  Logger.log(JSON.stringify(e.namedValues));
+
+  const payload = JSON.stringify(e.namedValues);
+
+  const response = UrlFetchApp.fetch(
+    "https://valid-obedient-fedora.ngrok-free.dev/webhook-test/b4dcec45-2f52-4b54-ace6-ae66a5a2631f",
+    {
+      method: "post",
+      contentType: "application/json",
+      payload: payload,
+      muteHttpExceptions: true
+    }
+  );
+
+  Logger.log(response.getContentText());
